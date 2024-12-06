@@ -173,27 +173,36 @@ function nth(list, outputInd) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function deepEqual(x, y) {
-//  check if they're something besides objs
+//  check if they're BOTH not objs, use default comparison
   if(typeof x !== "object" && typeof y !== "object"){
   return x === y;
  }
-// if one OR the other isn't an object
+// if one OR the other isn't an object reurn false
  if (typeof x !== "object" || typeof y !== "object"){
   return false;
  }
 
+//  convert keys to array for easy comparison
  let xKeys = Object.keys(x);
  let yKeys = Object.keys(y);
+//  quick check sees if they aren't same length, we know 
+// they're notequal
  if(xKeys.length !== yKeys.length){
   return false;
  }
-
+// we now know both have equal length, so we iterate thru either
+// array...
  for (let i = 0; i < xKeys.length; i++){
+  // if the iterated key is NOT in the other array ORRRR
+  // we run deepEqual recursively checking...
+  // the original x OBJECT using the iterated key from the xKeya
+  // array to retrieve the value from the object. we compare this..
+  // to the same iterated key on the Y OBJECT. If no match, it's false 
   if(!yKeys.includes(xKeys[i]) || !deepEqual(x[xKeys[i]], y[xKeys[i]])){
     return false;
   }
  }
-
+// otherwise it's true.
  return true;
 }
 
