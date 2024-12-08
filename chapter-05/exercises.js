@@ -2,6 +2,9 @@
 // flatten /////////////////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
+const { characterScript } = require("./helpers");
+const SCRIPTS = require("./scripts");
+
 function flatten(array) {
 // console.log(array);
   return array.reduce(function(acc, current){
@@ -35,15 +38,43 @@ function loop(val, testFunc, updateFunc, bodyFunc) {
 // /////////////////////////////////////////////////////////////////////////////
 
 function every(array, test) {
+  // console.log(array);
+  // console.log(test);
 
+  if(array.length === 0){
+    return true;
+  }
+
+
+  if(test(array[0])){
+    return every(array.slice(1), test);
+  } else {
+    return false};
+  ;
+
+  
 }
 
 // /////////////////////////////////////////////////////////////////////////////
 // dominantDirection ///////////////////////////////////////////////////////////
 // /////////////////////////////////////////////////////////////////////////////
 
-function dominantDirection() {
+function dominantDirection(text) {
+  // check argument, and check access to SCRIPTS
+  // console.log(text);
+  // console.log(SCRIPTS);
+  
+  //access path to helpers
+  // const helpers = require('./path/to/helpers.js'); 
 
+  // assign a variable to a sample from the arg 
+  let codeVar = text.charCodeAt(0);
+  // console.log(codeVar);
+
+  // for(let script of SCRIPTS){
+    // console.log(script.ranges);
+    // console.log(SCRIPTS[i]);
+  // }
 }
 
 // /////////////////////////////////////////////////////////////////////////////
