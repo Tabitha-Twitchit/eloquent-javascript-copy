@@ -18,11 +18,12 @@ function repeat(n, action) {
   function countBy(items, groupName) {
     let counts = [];
     for (let item of items) {
-      let name = groupName(item);
-      let known = counts.findIndex(c => c.name == name);
-      if (known == -1) {
+      let group = groupName(item);
+      let known = counts.findIndex(c => c.name == group.name);
+      if (known === -1) {
         counts.push({
-          name,
+          name: group.name,
+          direction: group.direction,
           count: 1
         });
       } else {
