@@ -15,6 +15,9 @@ function repeat(n, action) {
     return null;
   }
   
+  // TABI modified this to include a direction proprty in what is pushed
+  // Also modified the groupName function from the exercises / book that
+  // is called here. 
   function countBy(items, groupName) {
     let counts = [];
     for (let item of items) {
